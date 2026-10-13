@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white text-ink font-sans antialiased; }
+  section[id] { scroll-margin-top: 16px; }
+  :focus-visible { outline: 2px solid #6A4CA8; outline-offset: 3px; border-radius: 6px; }
+}
+
+@layer components {
+  /* Palabras resaltadas en los titulares: lavanda + serif de la marca */
+  .hl { @apply font-serif italic font-semibold text-violet-500; font-size: 1.12em; line-height: 0.9; letter-spacing: 0; }
+  .label { @apply text-[13px] font-medium text-muted; }
+  .h2 { @apply text-[28px] font-semibold leading-[1.18] tracking-[-0.02em] sm:text-[34px] lg:text-[40px]; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-violet-500 px-7 py-3.5 text-[15px] font-semibold text-white
+      transition-[background-color,transform] duration-150 ease-out hover:bg-violet-600 active:scale-[0.97];
+  }
+  .tile { @apply grid h-10 w-10 shrink-0 place-items-center rounded-[10px] bg-lav-100 text-violet-500; }
+  .card-line { @apply rounded-[22px] border border-line bg-white shadow-[0_2px_14px_-6px_rgba(74,52,120,.08)]; }
+}
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s cubic-bezier(.23,1,.32,1), transform .6s cubic-bezier(.23,1,.32,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
